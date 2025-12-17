@@ -38,7 +38,7 @@ Some key characteristics are listed below
 I decided to tackle dictionaries next because I use them almost as much if not more than lists in my day to day python coding!
 
 Dictionaries just use something called Key-Value pairs.<br> Which means that if you have something like the inventory you need to access in a video game. You would make this...
-```
+```python
 game_data = {
     "Inventory": ["List", "Of", "Items"]
 }
@@ -69,11 +69,87 @@ If you just need an ordered collection of items and care about position, use a l
 If you need an organized way to hold a lot (or a little) amount of data, use dictionaries.
 
 ---
-## Infomation for today
+### Infomation for today
 Time Spent: ~30-40 minutes
 
 Sources Used: Internet, some docs
 
 Mostly just reviewed some of what I know about Data Structures
+
+## Day 12/17/2025
+
+Today I will continue learning about data structures.
+
+---
+
+### 1. Stacks
+
+Going into this, I have no clue what a stack is...
+
+So a stack is a linear data structure that follows LIFO. LIFO stands for Last In First Out.
+<br>
+This just means that the last element in the stack is the first on to be removed.
+<br>
+Think like a stack of rings, you gotta remove them from top to bottom; but you place them bottom to top.
+
+Core Operations in stacks include
+
+- Push: Adds an element to the top of the stack.
+
+- Pop: Removes **and returns** the object at the top
+
+- Peek (or Top): Returns the object at the top **without removing it**
+
+- isEmpty and isFull: Just returns a bool if the stack is empty or full
+
+I looked around for some uses of stacks in programming language and I found the following.
+
+- History: Like the back button on a webpage
+
+- Sorting Algorithms: You can sort lists and arrays by using a stack method.
+
+A way to use this in python is kinda simple if you understand syntax.
+
+```python
+# Create a stack (list)
+stack = []
+
+# Add Values to the stack
+stack.append("a")
+stack.append("b")
+stack.append("c")
+
+# See values in the stack
+print(stack)
+
+# Remove values in a stack and print
+# For this .pop() is used
+print(stack.pop())
+print(stack.pop())
+print(stack.pop())
+
+# Display the empty stack
+print(stack)
+```
+
+Now the output would look like this...
+
+```python
+["a", "b", "c"]
+"c"
+"b"
+"a"
+[]
+```
+
+I read this <a href="https://www.geeksforgeeks.org/python/stack-in-python/">website (click here)</a> to see how stacks are used in Python.
+
+### 2. Queues
+
+I knew less about this than I did about stacks...
+
+I google what a queue is and found that these are some key concepts.
+
+- Front (Head): 
 
 </div>
