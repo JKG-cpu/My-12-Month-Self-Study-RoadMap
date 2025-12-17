@@ -162,7 +162,7 @@
 
 ---
 
-# 🎓 Classes You Should Take (High School)
+# 🎓 Classes I Should Take (High School)
 
 ## ✅ Current (Good Choices)
 
