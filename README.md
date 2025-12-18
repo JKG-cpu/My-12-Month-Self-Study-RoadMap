@@ -20,6 +20,10 @@
 
 **🎯 Goal:** *Think like a software engineer, not just a coder.*
 
+### Learning Log
+
+- [What I Did - Daily Log](What%20I%20Did.md)
+
 ---
 
 ## 🟦 Month 2 – Algorithms & Problem Solving
