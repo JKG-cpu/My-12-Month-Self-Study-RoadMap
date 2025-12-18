@@ -264,6 +264,39 @@ Learned some new stuff I didn't know works that way.
 
 I reviewed and made some scripts on what I studied...
 
+I went over stacks and queues, as well as dictionaries and lists.
+<br>
+Here's some links to the practice files
+
+- [Lists](Data%20Structures%20Playground/lists.py)
+
+- [Dictionaries](Data%20Structures%20Playground/dictionaries.py)
+
+- [Queues](Data%20Structures%20Playground/queues.py)
+
+- [Stacks](Data%20Structures%20Playground/stacks.py)
+
+I also started working on some projects including all of these (or most).<br>Don't worry... I explain the code underneath the project and in the file for you guys.
+
+1. [Task Manager](Code/task%20manager.py)
+
+    - Breaking down the problem.
+        - Finding a way to include lists, dictionaries, stacks and queues?
+            - Add a undo button
+            - Dictionaries for task detials + a list of the tasks
+            - Queues to run in the background with threading
+        - Going to need a way to grab user input from CLI
+        - Parse User Input
+        - Add, Remove, or View Tasks
+
+    - Creating Different methods.
+        - An add task method
+        - A remove task method
+        - And a view task method
+
+    - Running the program.
+        - Use a class and call a run method
+
 
 
 </div>
