@@ -22,7 +22,7 @@
 
 ### Learning Log
 
-- [What I Did - Daily Log](What%20I%20Did.md)
+- [What I Did - Daily Log](Month%201/What%20I%20Did.md)
 
 ---
 
