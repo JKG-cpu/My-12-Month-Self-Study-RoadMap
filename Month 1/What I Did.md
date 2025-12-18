@@ -260,4 +260,10 @@ Time Spent: ~45 minutes
 Sources: Internet and <a href="https://www.geeksforgeeks.org">GeeksForGeeks.org</a>
 Learned some new stuff I didn't know works that way.
 
+## Day 12/18/2025
+
+I reviewed and made some scripts on what I studied...
+
+
+
 </div>
