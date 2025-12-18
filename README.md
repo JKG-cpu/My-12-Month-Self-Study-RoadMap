@@ -1,5 +1,7 @@
 <div style="color: white">
 
+# This repository tracks my self-study progress toward software engineering and cybersecurity skills over 12 months, with daily logs, notes, examples, and resources.
+
 # 🧭 12‑Month Self‑Study Roadmap
 
 ## *Software Engineering + Ethical Hacking*
