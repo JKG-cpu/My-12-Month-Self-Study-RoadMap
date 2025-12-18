@@ -13,6 +13,20 @@
 
 ### Will Be working on this till 1/16/26
 
+### Needs
+
+*PS This is provided by AI and tips from other people*
+
+For 2. (Big-O), focus on understanding how runtime grows as input size increases:
+
+- O(1) => Constant Time
+
+- O(n) => Linear Time
+
+- O(n^2) => Nested Loops
+
+- O(log n) => divide and conquer idea
+
 *I will most likely be adding onto this*
 
 </div>
