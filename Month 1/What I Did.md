@@ -69,12 +69,13 @@ If you just need an ordered collection of items and care about position, use a l
 If you need an organized way to hold a lot (or a little) amount of data, use dictionaries.
 
 ---
-### Infomation for today
+### Information on today
 Time Spent: ~30-40 minutes
 
 Sources Used: Internet, some docs
 
 Mostly just reviewed some of what I know about Data Structures
+
 
 ## Day 12/17/2025
 
@@ -148,8 +149,115 @@ I read this <a href="https://www.geeksforgeeks.org/python/stack-in-python/">webs
 
 I knew less about this than I did about stacks...
 
-I google what a queue is and found that these are some key concepts.
+I googled what a queue is and found that these are some key concepts.
 
-- Front (Head): 
+- Front (Head): The side where objects are removed
+
+- Rear: The side where objects are added
+
+- Enqueue (Push): Adds an object to the rear
+
+- Dequeue (Pop): Removes an object from the front
+
+- Empty / Size: Checks the size of the queue
+
+- Uses FIFO: First in, First out
+
+I found some interesting implementations for this, including 
+
+- Arrays: fixed or dynamic => often with pointers?
+
+- Linked Lists: Allows multiple lists to be used *and* it points to the next list
+
+- Circular Queue: Just imagine a list that repeats itself + can have values *added*
+
+It wasn't as complicated as I thought... it's actually pretty simple to use in python!
+
+Here's an example to use where you make a queue q and add values, then remove them in queue style
+
+```python
+q = []
+
+# Add Items from REAR
+q.append("a")
+q.append("b")
+q.append("c")
+
+# Display what is in the current queue
+print(f"Current Items in Queue: {q}")
+
+# Remove + Display removed items from queue
+print("Elements Dequeued")
+print(q.pop(0)) # pop(0) so its from the front (Because of FIFO)
+print(q.pop(0))
+print(q.pop(0))
+
+# List what the queue is now
+print(f"Current Items in Queue: {q}")
+```
+Here's the output...
+```
+Current Items in Queue: ["a", "b", "c"]
+Elements Dequeued
+a
+b
+c
+Current Items in Queue: []
+```
+
+I found a really cool example <a href="https://www.geeksforgeeks.org/python/queue-in-python/">***here***</a> where you use collection.deque library
+
+```python
+from collections import deque
+q = deque()
+
+q.append('a')
+q.append('b')
+q.append('c')
+print(f"Current Items in Queue: {q}")
+
+print("Elements Dequeued")
+print(q.popleft())
+print(q.popleft())
+print(q.popleft())
+
+print(f"Current Items in Queue: {q}")
+```
+
+and one using a queue specific library
+
+```python
+from queue import Queue
+q = Queue(maxsize=3)
+print("Initial size:", q.qsize())
+
+q.put('a')
+q.put('b')
+q.put('c')
+print("Is full:", q.full())
+
+print("Elements dequeued from the queue:")
+print(q.get())
+print(q.get())
+print(q.get())
+print("Is empty:", q.empty())
+
+q.put(1)
+print("Is empty:", q.empty())
+print("Is full:", q.full())
+```
+
+### Difference?
+Stacks and Queues are used for different things and use different *"rules"*.<br>Stacks use LIFO while Queues use FIFO.
+<br>
+
+Stacks => undo/redo, parsing, recursion, backtracking
+
+Queues => scheduling, buffering, task processing, pipelines
+
+### Information on Today
+Time Spent: ~45 minutes
+Sources: Internet and <a href="https://www.geeksforgeeks.org">GeeksForGeeks.org</a>
+Learned some new stuff I didn't know works that way.
 
 </div>
