@@ -301,4 +301,8 @@ Time Spent: ~1 hr<br>
 Sources: Notes from yesterday.<br>
 I created a few practice programs to reinforce the data structures I learned. <br>I then got started on creating the task manager. I made methods to add stuff to a queue, continuously process the queue (until program stopped) with threading (PS Threading is overkill for this, but it's just some practice because I have used it before).<br> And made a method to add tasks.
 
+## Day 12/19/25
+
+Today I'm just gonna finish creating the task manager (maybe another project for extra practice???)
+
 </div>
