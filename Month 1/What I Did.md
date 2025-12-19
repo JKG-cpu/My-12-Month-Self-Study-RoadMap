@@ -70,10 +70,8 @@ If you need an organized way to hold a lot (or a little) amount of data, use dic
 
 ---
 ### Information on today
-Time Spent: ~30-40 minutes
-
-Sources Used: Internet, some docs
-
+Time Spent: ~30-40 minutes<br>
+Sources Used: Internet, some docs<br>
 Mostly just reviewed some of what I know about Data Structures
 
 
@@ -256,8 +254,8 @@ Stacks => undo/redo, parsing, recursion, backtracking
 Queues => scheduling, buffering, task processing, pipelines
 
 ### Information on Today
-Time Spent: ~45 minutes
-Sources: Internet and <a href="https://www.geeksforgeeks.org">GeeksForGeeks.org</a>
+Time Spent: ~45 minutes<br>
+Sources: Internet and <a href="https://www.geeksforgeeks.org">GeeksForGeeks.org</a><br>
 Learned some new stuff I didn't know works that way.
 
 ## Day 12/18/2025
@@ -283,7 +281,7 @@ I also started working on some projects including all of these (or most).<br>Don
     - Breaking down the problem.
         - Finding a way to include lists, dictionaries, stacks and queues?
             - Add a undo button
-            - Dictionaries for task detials + a list of the tasks
+            - Dictionaries for task details + a list of the tasks
             - Queues to run in the background with threading
         - Going to need a way to grab user input from CLI
         - Parse User Input
@@ -297,6 +295,10 @@ I also started working on some projects including all of these (or most).<br>Don
     - Running the program.
         - Use a class and call a run method
 
+### Information on Today
 
+Time Spent: ~1 hr<br>
+Sources: Notes from yesterday.<br>
+I created a few practice programs to reinforce the data structures I learned. <br>I then got started on creating the task manager. I made methods to add stuff to a queue, continuously process the queue (until program stopped) with threading (PS Threading is overkill for this, but it's just some practice because I have used it before).<br> And made a method to add tasks.
 
 </div>
