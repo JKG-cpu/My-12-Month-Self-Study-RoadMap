@@ -25,6 +25,7 @@ class TaskManager:
         self.kill_thread_event = threading.Event()
         self.lock = threading.Lock()  # Protect shared state
         self.queue_thread: threading.Thread | None = None
+        self.task_history = [] # Stack of history
 
     # Helper Methods
     def add_task(self, name: str, importance: str, details: str | None = None) -> None:
@@ -36,13 +37,34 @@ class TaskManager:
         # Add the task to the list (thread-safe)
         with self.lock:
             self.tasks.append(new_task)
+            self.task_history.append(self.tasks.index(new_task))
 
-    def remove_task(self) -> None:
-        pass
+    def remove_task(self, number: int) -> None | str:
+        try:
+            self.task_history.append(self.tasks.pop(number))
+        
+        except:
+            return "Not a valid task number."
 
     def view_tasks(self) -> None:
-        print(self.tasks)
-        input()
+        # View that tasks are being changed
+        print("Tasks:\n")
+
+        for task in self.tasks:
+            print(f"Task Name: {task["Name"]}") # Access values by KEY
+            print(f"Task Importance: {task["Importance"]}")
+            print(f"Task Details: {task["Details"]}")
+            print()
+
+        input("Press enter to continue. ")
+
+    def undo(self) -> None:
+        if self.task_history:
+            command = self.task_history.pop()
+            if isinstance(command, int):
+                self.tasks.pop(command)
+            else:
+                self.tasks.append(self.task_history.pop())
 
     # Queue stuff
     def add_to_queue(self, func, args: tuple[Any, ...] = ()) -> None:
@@ -50,6 +72,7 @@ class TaskManager:
 
     # Actual thread
     def _run_queue(self) -> None:
+        # This just checks if something is in the queue, but if nothing it just idles
         while not self.kill_thread_event.is_set() or self.queue:
             if self.queue:
                 # Grab leftmost item
@@ -68,8 +91,10 @@ class TaskManager:
 
     # Method for stopping the thread
     def stop_queue(self) -> None:
+        # Safely stop the queue thread by setting the event
         self.kill_thread_event.set()
         if self.queue_thread:
+            # Wait for thread to stop
             self.queue_thread.join()
 
     # A Run Method
@@ -89,6 +114,7 @@ class TaskManager:
         
             # Add Task
             elif user_input.startswith("A"):
+                # Get Task Data (VERY BASIC)
                 name = input("Task Name > ")
                 importance = input("Importance (High, Medium, Low) > ")
                 details = input("Details (Press Enter for None) > ")
@@ -97,6 +123,18 @@ class TaskManager:
             # View Tasks
             elif user_input.startswith("V"):
                 self.view_tasks()
+
+            # Remove Task
+            elif user_input.startswith("R"):
+                number = input("Enter a number > ")
+                return_value = self.remove_task(int(number) - 1) # Subtrace 1 due to python's indexing
+                if return_value:
+                    print(return_value)
+                    input("Press enter to continue.")
+
+            # Undo
+            elif user_input.startswith("U"):
+                self.undo()
 
         # Stop Thread
         self.stop_queue()

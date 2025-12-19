@@ -305,4 +305,21 @@ I created a few practice programs to reinforce the data structures I learned. <b
 
 Today I'm just gonna finish creating the task manager (maybe another project for extra practice???)
 
+I finished the task manager!<br> I made a stack for history (undo changes), made a remove and adding task + made tasks dictionaries<br>and a list holding all the tasks! I also used a queue with threading (THREADING IS OVERKILL FOR THIS)!
+
+I had to do some research on thread locks, but other than that I made this with only the previous notes!<br>
+Of course you can make this better, this is a very "rough" task manager... I only made it to practice data structers.<br>
+I included comments so you can see what each part of code does!
+
+### Quick Reflection
+
+I sort of messed up a bit with threading (because I was somewhat "rusty" with locks). I need to keep consistency with my locks (using with self.lock everywhere I modify self.tasks).<br>
+Also for my stack design, I shouldn't be using raw data, more like commands. It should be like ("add", task) or ("remove", task, index) (I'll need index because there may be duplicated tasks...).<br>
+I won't be updating the code because this was just for practice, but in the future I will be changing code to include these things.
+
+### Information on Today
+Time Spent: ~30-45 min<br>
+Sources: Notes<br>
+I wasn't completely sure on queues and stacks, so I used my notes. I'm quite sure that if you read through my code **[here](Code/task%20manager.py)** while looking at my notes, you would be able to understand it!
+
 </div>
