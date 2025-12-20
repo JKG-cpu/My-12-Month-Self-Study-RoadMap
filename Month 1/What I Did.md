@@ -322,4 +322,83 @@ Time Spent: ~30-45 min<br>
 Sources: Notes<br>
 I wasn't completely sure on queues and stacks, so I used my notes. I'm quite sure that if you read through my code **[here](Code/task%20manager.py)** while looking at my notes, you would be able to understand it!
 
+## Day 12/20/25
+
+I watched a Video on Big-O Notation *[(Click Here)](https://www.youtube.com/watch?v=XMUe3zFhM5c&t=40s)*
+
+Big-O Notation Notes
+
+- Describes the preformance of an algorithm as data increases
+
+- Ignores small operations like O(n + 1) is just O(n)
+
+- N is the amount of data used
+
+Examples of notation (In Video at 6:06):
+- O(1) => constant time: Fastest, doesn't take more time (steps) with larger data sets
+
+- O(n) => linear time: Kinda slow, grows linear depending on data
+
+- O(log n) => logarithimc time: Little bit slower than constant time, but faster than linear. It also doesn't have much of a grow on steps for larger data sets
+
+- O(n^2) => quadratic time: Really slow, takes n^2 steps to complete
+
+- O(n!) => factorial time: Really **REALLY** slow, don't ever use this for everyday things
+
+### Examples
+O(1): Constant Time
+```python
+def addUp(n: int) -> int:
+    return n * (n + 1) / 2
+```
+Now if n is 1000000, then it would take about 3 steps because it does 3 "operations"
+
+O(log n): Logarithmic Time
+```python
+def log_n_loop(n: int) -> int:
+    count = 0
+    i = n
+    while i > 1:
+        # The key is dividing the problem space in half
+        i = i // 2
+        count += 1
+        print(f"Current i: {i}")
+    return count
+
+input_size = 16
+ops = log_n_loop(input_size)
+print(f"Number of operations for n = {input_size}: {ops}")
+```
+
+This runs 4 times (8 -> 4 -> 2 -> 1)
+
+O(n): Linear Time
+```python
+def addUp(n: int) -> int:
+    sum = 0
+
+    for _ in range(n):
+        sum += 1
+
+    return sum
+```
+
+If n is 1000000, then it would take about 1000000 steps.
+
+O(n^2): Quadratic Time
+```python
+def printPairs(items: list) -> None:
+    n = len(items)
+    for i in range(n):
+        for j in range(n):
+            print(f"{items[i]} and {items[j]}")
+```
+
+If the input list is 3 items, then the outer loop would run 3 times and for each time the inner loop would run 3 times.
+
+### Information on Today
+Time Spent: ~20-30 minutes<br>
+Sources: [Bro Code Video](https://www.youtube.com/watch?v=XMUe3zFhM5c&t=40s)<br>
+Learned that different notations in Big-O Scale a lot faster than others.
+
 </div>

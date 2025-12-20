@@ -7,10 +7,16 @@
         "**/Thumbs.db": true,
         "**/*.crswap": true,
         ".gitignore": true,
+        "AI Usage.md": true,
+        "README.md": true,
+        "Time Commitment.md": true,
         "LICENSE": true
     },
     "hide-files.files": [
         ".gitignore",
+        "AI Usage.md",
+        "README.md",
+        "Time Commitment.md",
         "LICENSE"
     ]
 }
