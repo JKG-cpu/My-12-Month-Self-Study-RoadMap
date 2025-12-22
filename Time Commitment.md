@@ -13,6 +13,7 @@ The focus is **consistency, sustainability, and hands-on learning**.
 - **Minimum:** 30 minutes
 - **Ideal:** 45–60 minutes
 - **Busy days:** 0 minutes is acceptable
+- **Sunday off:** Most of the time
 
 > The goal is not perfection — it’s consistency over weeks and months.
 

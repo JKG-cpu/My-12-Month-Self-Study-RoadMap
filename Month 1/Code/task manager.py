@@ -9,6 +9,7 @@ from os import system, name
 # and sleep so I don't have the thread running at 100% (adding sleep(.5) or something)
 
 # This is just to clear the terminal during runtime
+# O(1)
 def cc():
     system("cls" if name == "nt" else "clear")
 
@@ -28,6 +29,7 @@ class TaskManager:
         self.task_history = [] # Stack of history
 
     # Helper Methods
+    # O(n)
     def add_task(self, name: str, importance: str, details: str | None = None) -> None:
         new_task = self.task_layout.copy()  # Copy a base layout => If we don't we would be changing self.task_layout
         new_task["Name"] = name  # No need for .get() because we know for sure we have a Name key
@@ -39,6 +41,7 @@ class TaskManager:
             self.tasks.append(new_task)
             self.task_history.append(self.tasks.index(new_task))
 
+    # O(n)
     def remove_task(self, number: int) -> None | str:
         try:
             self.task_history.append(self.tasks.pop(number))
@@ -46,6 +49,7 @@ class TaskManager:
         except:
             return "Not a valid task number."
 
+    # O(n)
     def view_tasks(self) -> None:
         # View that tasks are being changed
         print("Tasks:\n")
@@ -58,6 +62,7 @@ class TaskManager:
 
         input("Press enter to continue. ")
 
+    # O(n)
     def undo(self) -> None:
         if self.task_history:
             command = self.task_history.pop()
@@ -67,10 +72,12 @@ class TaskManager:
                 self.tasks.append(self.task_history.pop())
 
     # Queue stuff
+    # O(1)
     def add_to_queue(self, func, args: tuple[Any, ...] = ()) -> None:
         self.queue.append((func, args))
 
     # Actual thread
+    # O(1): per iteration
     def _run_queue(self) -> None:
         # This just checks if something is in the queue, but if nothing it just idles
         while not self.kill_thread_event.is_set() or self.queue:
@@ -85,6 +92,7 @@ class TaskManager:
                 sleep(.05)
 
     # Method for starting the thread
+    # O(1)
     def run_queue(self) -> None:
         self.queue_thread = threading.Thread(target=self._run_queue)
         self.queue_thread.start()
