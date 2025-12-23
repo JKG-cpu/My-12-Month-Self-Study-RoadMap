@@ -13,8 +13,6 @@
 
 ***🎯 Goal: Think like a software engineer, not just a coder.***
 
-### Will Be working on this till 1/16/26
-
 ### Needs
 
 *PS This is provided by AI and tips from other people*

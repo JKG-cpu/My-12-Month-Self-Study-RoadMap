@@ -1,7 +1,3 @@
-import threading
-from collections import deque
-from time import sleep
-from typing import Any
 from os import system, name
 
 # I'll need these imports for a queue 
@@ -22,30 +18,28 @@ class TaskManager:
             "Importance": ["Low", "Medium", "High"],  # Options for setting importance
             "Details": ""  # Task Details (If want to add, defaults to None)
         }
-        self.queue = deque()  # Init our queue
-        self.kill_thread_event = threading.Event()
-        self.lock = threading.Lock()  # Protect shared state
-        self.queue_thread: threading.Thread | None = None
         self.task_history = [] # Stack of history
 
     # Helper Methods
-    # O(n)
+    # O(1)
     def add_task(self, name: str, importance: str, details: str | None = None) -> None:
         new_task = self.task_layout.copy()  # Copy a base layout => If we don't we would be changing self.task_layout
         new_task["Name"] = name  # No need for .get() because we know for sure we have a Name key
         new_task["Importance"] = importance
         new_task["Details"] = details if details else "No Details Provided."
 
-        # Add the task to the list (thread-safe)
-        with self.lock:
-            self.tasks.append(new_task)
-            self.task_history.append(self.tasks.index(new_task))
+        self.tasks.append(new_task)
+        index = len(self.tasks) - 1
+        self.task_history.append(("add", index))
 
     # O(n)
     def remove_task(self, number: int) -> None | str:
         try:
-            self.task_history.append(self.tasks.pop(number))
-        
+            self.task_history.append(("remove", self.tasks.pop(number), number))
+            # pop(index) → O(n)
+            # append history → O(1)
+            # total → O(n)
+
         except:
             return "Not a valid task number."
 
@@ -66,49 +60,14 @@ class TaskManager:
     def undo(self) -> None:
         if self.task_history:
             command = self.task_history.pop()
-            if isinstance(command, int):
-                self.tasks.pop(command)
-            else:
-                self.tasks.append(self.task_history.pop())
-
-    # Queue stuff
-    # O(1)
-    def add_to_queue(self, func, args: tuple[Any, ...] = ()) -> None:
-        self.queue.append((func, args))
-
-    # Actual thread
-    # O(1): per iteration
-    def _run_queue(self) -> None:
-        # This just checks if something is in the queue, but if nothing it just idles
-        while not self.kill_thread_event.is_set() or self.queue:
-            if self.queue:
-                # Grab leftmost item
-                function, args = self.queue.popleft()
-                try:
-                    function(*args)
-                except Exception as e:
-                    print(f"Thread error: {e}")
-            else:
-                sleep(.05)
-
-    # Method for starting the thread
-    # O(1)
-    def run_queue(self) -> None:
-        self.queue_thread = threading.Thread(target=self._run_queue)
-        self.queue_thread.start()
-
-    # Method for stopping the thread
-    def stop_queue(self) -> None:
-        # Safely stop the queue thread by setting the event
-        self.kill_thread_event.set()
-        if self.queue_thread:
-            # Wait for thread to stop
-            self.queue_thread.join()
+            if command[0] == "add":
+                self.tasks.pop(command[1])
+            
+            elif command[0] == "remove":
+                self.tasks.insert(command[2], command[1])
 
     # A Run Method
     def run(self) -> None:
-        self.run_queue() # Start running the background thread
-
         # Main Loop
         running = True
         while running:
@@ -126,7 +85,7 @@ class TaskManager:
                 name = input("Task Name > ")
                 importance = input("Importance (High, Medium, Low) > ")
                 details = input("Details (Press Enter for None) > ")
-                self.add_to_queue(self.add_task, (name, importance, details if details else None))
+                self.add_task(name, importance, details if details else None)
 
             # View Tasks
             elif user_input.startswith("V"):
@@ -143,9 +102,6 @@ class TaskManager:
             # Undo
             elif user_input.startswith("U"):
                 self.undo()
-
-        # Stop Thread
-        self.stop_queue()
 
 if __name__ == "__main__":
     task_manager = TaskManager()
