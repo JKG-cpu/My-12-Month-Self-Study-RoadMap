@@ -10,6 +10,11 @@ Started learning about Linear Searches. Pretty simple, it just checks each item 
 ### Information on Today
 Time spent: ~15 min
 Sources: Internet
-I could only log 15 minutes, (bc its Christmas Eve) Merry Christmas you all!
+I could only log 15 minutes, (bc its Christmas Eve)...
+
+## 12/25/25
+
+It's Christmas so no logs to day...
+***Merry Christmas!!!***
 
 </div>
